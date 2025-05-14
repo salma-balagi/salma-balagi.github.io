@@ -23,21 +23,26 @@
         margin: 0;
         overflow: hidden;
         flex-direction: column;
-        position: relative;
       }
 
-      /* Name Styling - on the Left */
+      .container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* Name Styling */
       .name {
         font-size: 2rem;
         font-weight: 700;
-        position: absolute;
-        left: 20px;
-        top: 10px;
+        padding-top: 10px;
         color: #000;
         text-transform: uppercase;
       }
 
-      /* Menu Icon Styling - on the Right */
+      /* Menu Icon Styling */
       .menu-icon {
         font-size: 2rem;
         cursor: pointer;
@@ -85,9 +90,6 @@
         margin-top: 40px;
         position: relative;
         overflow: hidden;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
       }
 
       .slides {
@@ -151,15 +153,15 @@
   </head>
 
   <body>
-    <div class="name">Salma Balagi</div>
-    <div class="menu-icon">&#9776;</div>
-    <div class="popup">
-      <a href="#selected-work">Selected Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-
     <div class="container">
+      <div class="name">Salma Balagi</div>
+      <div class="menu-icon">&#9776;</div>
+      <div class="popup">
+        <a href="#selected-work">Selected Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
       <!-- Image Slider Section -->
       <div class="slider">
         <div class="slides">
