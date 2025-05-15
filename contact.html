@@ -3,124 +3,208 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact - Salma Balagi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet" />
+  <title>Salma Balagi - Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Work Sans', sans-serif;
-      margin: 0;
       background-color: #fff;
       color: #000;
-      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
     }
 
     header {
+      width: 100%;
+      max-width: 800px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem;
-      border-bottom: 1px solid #eee;
+      justify-content: center;
       position: relative;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
     }
 
-    .name {
-      font-size: 1rem;
+    .title-menu-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-size: 1.6rem;
       font-weight: 300;
       text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #222;
     }
 
     .menu-icon {
-      font-size: 1rem;
-      cursor: pointer;
+      font-size: 1.6rem;
       font-weight: 300;
+      color: #222;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+
+    .menu-icon:hover,
+    .menu-icon:focus {
+      color: #555;
+      outline: none;
     }
 
     .popup {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      display: none;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      padding: 10px 15px;
+      width: 180px;
+      border-radius: 4px;
+      position: absolute;
+      top: 100%;
+      margin-top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .popup.show {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .popup a {
-      font-size: 0.9rem;
-      margin: 0.5rem 0;
-      color: #000;
-      text-decoration: none;
+      font-family: 'Work Sans', sans-serif;
       font-weight: 300;
+      font-size: 0.9rem;
+      color: #222;
+      text-decoration: none;
+      margin: 0.4rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+      user-select: none;
     }
 
     .popup a:hover {
+      color: #333;
       text-decoration: underline;
     }
 
-    .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: calc(100vh - 80px);
-      padding: 2rem;
+    section {
+      width: 100%;
+      max-width: 800px;
+      padding: 60px 20px;
       text-align: center;
     }
 
-    .content h1 {
-      font-size: 1.5rem;
-      font-weight: 300;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
     }
 
-    .content a {
-      font-size: 0.95rem;
+    section a.email-link {
+      font-size: 1rem;
       font-weight: 300;
       color: #000;
-      text-decoration: underline;
+      text-decoration: none;
+      letter-spacing: 1px;
+      border: 1px solid #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .content a:hover {
-      color: #333;
+    section a.email-link:hover {
+      background-color: #000;
+      color: #fff;
     }
 
     @media (max-width: 600px) {
-      .content h1 {
+      .title-menu-container {
+        margin-top: 30px;
+      }
+
+      .page-title,
+      .menu-icon {
         font-size: 1.2rem;
       }
-      .content a {
-        font-size: 0.85rem;
+
+      .popup a {
+        font-size: 0.8rem;
+      }
+
+      section {
+        padding: 40px 15px;
+      }
+
+      section a.email-link {
+        font-size: 0.9rem;
+        padding: 8px 16px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="name">Salma Balagi</div>
-    <div class="menu-icon" onclick="toggleMenu()">Menu</div>
+    <div class="title-menu-container">
+      <div class="page-title">Salma Balagi</div>
+      <div
+        class="menu-icon"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+        role="button"
+        tabindex="0"
+        onkeypress="if(event.key==='Enter'){toggleMenu();}"
+      >
+        &#9776;
+      </div>
+    </div>
+    <div class="popup" id="popupMenu">
+      <a href="index.html#selected-work">Selected Work</a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </header>
 
-  <div class="popup" id="popupMenu">
-    <a href="index.html#selected-work">Selected Work</a>
-    <a href="index.html#about">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <div class="content">
-    <h1>Contact</h1>
-    <a href="mailto:your.email@example.com">your.email@example.com</a>
-  </div>
+  <section>
+    <h2>Contact Me</h2>
+    <a class="email-link" href="mailto:sbalegi@gmail.com">sbalegi@gmail.com</a>
+  </section>
 
   <script>
+    const menu = document.getElementById('popupMenu');
+
     function toggleMenu() {
-      var popup = document.getElementById("popupMenu");
-      popup.style.display = popup.style.display === "flex" ? "none" : "flex";
+      menu.classList.toggle('show');
     }
+
+    window.addEventListener('click', function (e) {
+      if (!menu.contains(e.target) && !e.target.classList.contains('menu-icon')) {
+        menu.classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>
