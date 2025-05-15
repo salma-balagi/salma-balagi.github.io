@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Salma Balagi</title>
-  <!-- Optional: Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -17,10 +16,10 @@
       font-family: 'Work Sans', sans-serif;
       background-color: #fff;
       color: #000;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
       overflow-x: hidden;
     }
 
@@ -29,19 +28,20 @@
       max-width: 800px;
       padding: 10px 20px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center; /* Center the content horizontally */
       position: relative;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
     }
 
-    /* New container for title + menu */
+    /* Container for title + menu */
     .title-menu-container {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-top: 40px;
-      margin-bottom: 20px;
-      position: relative;
-      right: auto; /* reset if needed */
+      margin-bottom: 10px;
     }
 
     .page-title {
@@ -50,19 +50,18 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #222;
-      user-select: none;
     }
 
     .menu-icon {
-      font-size: 1.6rem; /* match the title font size */
+      font-size: 1.6rem; /* same as title */
       font-weight: 300;
       color: #222;
       cursor: pointer;
-      user-select: none;
       transition: color 0.3s ease;
       line-height: 1;
       display: flex;
       align-items: center;
+      user-select: none;
     }
 
     .menu-icon:hover,
@@ -71,10 +70,8 @@
       outline: none;
     }
 
+    /* Popup menu below the title-menu container */
     .popup {
-      position: absolute;
-      top: 60px;
-      right: 20px;
       background-color: #fff;
       border: 1px solid #ddd;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -84,7 +81,14 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
       z-index: 10;
-      padding: 10px;
+      padding: 10px 15px;
+      width: 180px;
+      border-radius: 4px;
+      position: absolute;
+      top: 100%; /* right below the container */
+      margin-top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .popup.show {
@@ -172,7 +176,7 @@
     @media (max-width: 600px) {
       .title-menu-container {
         margin-top: 30px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
 
       .page-title {
