@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salma Balagi</title>
   <!-- Optional: Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -75,13 +75,14 @@
     }
 
     .page-title {
-      font-size: 2.5rem;
-      font-weight: bold;
+      font-size: 1.6rem;       /* smaller font size */
+      font-weight: 300;        /* thinner weight */
       text-transform: uppercase;
       margin-top: 40px;
       margin-bottom: 20px;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 2px;     /* slightly more spacing for elegance */
+      color: #222;             /* slightly softer black */
     }
 
     .slider {
@@ -148,7 +149,7 @@
 
     @media (max-width: 600px) {
       .page-title {
-        font-size: 1.8rem;
+        font-size: 1.2rem;
       }
 
       .slider {
@@ -187,7 +188,7 @@
         <img src="images/image1.JPG" alt="My artwork" />
       </div>
       <div class="slide">
-        <img src="images/image2.jpg" alt="Image 2" />
+        <img src="images/image2.JPG" alt="Image 2" />
       </div>
       <div class="slide">
         <img src="https://via.placeholder.com/800x500?text=Image+3" alt="Image 3" />
@@ -208,7 +209,6 @@
     <p>Your new exhibition will appear here.</p>
   </section>
 
- 
   <!-- JavaScript -->
   <script>
     const menu = document.getElementById('popupMenu');
