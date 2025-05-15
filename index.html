@@ -1,250 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Salma Balagi</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salma Balagi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- Optional: Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-      <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    /* Header (Menu Icon Only) */
+    header {
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+      padding: 10px 20px;
+      text-align: right;
+    }
 
-      body {
-        font-family: 'Arial', sans-serif;
-        background-color: #fff;
-        color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        overflow: hidden;
-        flex-direction: column;
-      }
+    .menu-icon {
+      font-size: 2rem;
+      cursor: pointer;
+      color: #000;
+    }
 
-      .container {
-        position: relative;
-        width: 100%;
-        max-width: 800px;
-        text-align: center;
-        padding: 20px;
-      }
+    .popup {
+      position: absolute;
+      top: 40px;
+      right: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      flex-direction: column;
+      z-index: 10;
+      padding: 10px;
+    }
 
-      /* Name Styling */
-      .name {
-        font-size: 2rem;
-        font-weight: 700;
-        padding-top: 10px;
-        color: #000;
-        text-transform: uppercase;
-      }
+    .popup a {
+      font-size: 1.1rem;
+      color: #000;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
 
-      .menu-icon {
-        font-size: 2rem;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        color: #000;
-      }
+    .popup a:hover {
+      color: #333;
+      text-decoration: underline;
+    }
 
-      .popup {
-        position: absolute;
-        top: 40px;
-        right: 20px;
-        background-color: #fff;
-        color: #000;
-        display: none;
-        flex-direction: column;
-        padding: 10px;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-      }
+    /* Page Title (Your Name) */
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #000;
+      letter-spacing: 1px;
+    }
 
-      .popup a {
-        font-size: 1.1rem;
-        color: #000;
-        text-decoration: none;
-        margin: 0.5rem 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+    /* Slider Section */
+    .slider {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      overflow: hidden;
+      position: relative;
+    }
 
-      .popup a:hover {
-        color: #f39c12;
-      }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slideAnimation 12s infinite;
+    }
 
-      main {
-        width: 100%;
-        max-width: 800px;
-        margin-top: 20px;
-      }
+    .slide {
+      min-width: 100%;
+      height: 100%;
+    }
 
-      .slider {
-        width: 100%;
-        height: 500px;
-        position: relative;
-        overflow: hidden;
-      }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-      .slides {
-        display: flex;
-        transition: transform 1s ease-in-out;
-      }
+    /* Dots for navigation */
+    .dots-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
 
-      .slide {
-        min-width: 100%;
-        height: 100%;
-      }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-      .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    .active-dot {
+      background-color: #000;
+    }
 
-      .dots-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-      }
+    @keyframes slideAnimation {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
 
-      .dot {
-        height: 12px;
-        width: 12px;
-        margin: 0 5px;
-        background-color: #bbb;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
+<body>
+  <!-- Header with Menu Icon -->
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <div class="popup" id="popupMenu">
+      <a href="#selected-work">Selected Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
 
-      .active-dot {
-        background-color: #000;
-      }
+  <!-- Name Section -->
+  <div class="page-title">Salma Balagi</div>
 
-      section {
-        margin-top: 60px;
-        padding: 20px;
-        text-align: center;
-      }
-
-      section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-      }
-
-      section p {
-        font-size: 1rem;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      @media (max-width: 600px) {
-        .slider {
-          height: 300px;
-        }
-
-        .name {
-          font-size: 1.5rem;
-        }
-
-        .menu-icon {
-          font-size: 1.5rem;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="name">Salma Balagi</div>
-      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-      <div class="popup" id="popupMenu">
-        <a href="#selected-work">Selected Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+  <!-- Image Slider -->
+  <div class="slider">
+    <div class="slides">
+      <div class="slide">
+        <img src="https://via.placeholder.com/800x500?text=Image+1" alt="Image 1" />
       </div>
-    </header>
-
-    <main>
-      <div class="slider">
-        <div class="slides" id="slides">
-          <div class="slide">
-            <img src="https://via.placeholder.com/800x500?text=Image+1" alt="Artwork 1" />
-          </div>
-          <div class="slide">
-            <img src="https://via.placeholder.com/800x500?text=Image+2" alt="Artwork 2" />
-          </div>
-          <div class="slide">
-            <img src="https://via.placeholder.com/800x500?text=Image+3" alt="Artwork 3" />
-          </div>
-        </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/800x500?text=Image+2" alt="Image 2" />
       </div>
-
-      <div class="dots-container">
-        <span class="dot" onclick="showSlide(0)"></span>
-        <span class="dot" onclick="showSlide(1)"></span>
-        <span class="dot" onclick="showSlide(2)"></span>
+      <div class="slide">
+        <img src="https://via.placeholder.com/800x500?text=Image+3" alt="Image 3" />
       </div>
-    </main>
+    </div>
+  </div>
 
-    <section id="selected-work">
-      <h2>Selected Work</h2>
-      <p>This section will feature a curated selection of my recent projects, including installations, sculptures, and experiments with bioart and recycled materials.</p>
-    </section>
+  <!-- Dots -->
+  <div class="dots-container">
+    <span class="dot" onclick="showSlide(0)"></span>
+    <span class="dot" onclick="showSlide(1)"></span>
+    <span class="dot" onclick="showSlide(2)"></span>
+  </div>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>I’m an interdisciplinary artist exploring transformation, decay, and the hidden life of materials. My work is rooted in nature, science, and memory, often involving fungi, microorganisms, and upcycled elements.</p>
-    </section>
+  <script>
+    const menu = document.getElementById('popupMenu');
+    function toggleMenu() {
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>For inquiries or collaborations, feel free to email me at: <strong>your.email@example.com</strong>.</p>
-    </section>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
 
-    <script>
-      // Toggle popup menu
-      function toggleMenu() {
-        const popup = document.getElementById("popupMenu");
-        popup.style.display = popup.style.display === "flex" ? "none" : "flex";
-      }
-
-      // Slider logic
-      let currentIndex = 0;
-      const slidesContainer = document.getElementById('slides');
-      const dots = document.querySelectorAll('.dot');
-
-      function showSlide(index) {
-        currentIndex = index;
-        updateSlider();
-      }
-
-      function updateSlider() {
-        slidesContainer.style.transform = `translateX(-${100 * currentIndex}%)`;
-        dots.forEach(dot => dot.classList.remove('active-dot'));
-        dots[currentIndex].classList.add('active-dot');
-      }
-
-      function changeSlide() {
-        currentIndex = (currentIndex + 1) % dots.length;
-        updateSlider();
-      }
-
-      // Initialize
+    function changeSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
       updateSlider();
-      setInterval(changeSlide, 5000);
-    </script>
-  </body>
+    }
+
+    function updateSlider() {
+      const offset = -100 * currentIndex;
+      document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+      dots.forEach(dot => dot.classList.remove('active-dot'));
+      dots[currentIndex].classList.add('active-dot');
+    }
+
+    function showSlide(index) {
+      currentIndex = index;
+      updateSlider();
+    }
+
+    setInterval(changeSlide, 5000); // Auto-change every 5 seconds
+    updateSlider(); // Set initial active dot
+  </script>
+</body>
 </html>
