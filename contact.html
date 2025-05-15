@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Salma Balagi - Contact</title>
+  <title>Salma Balagi</title>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -112,38 +112,18 @@
       text-decoration: underline;
     }
 
-    section {
-      width: 100%;
-      max-width: 800px;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 20px;
-    }
-
-    section a.email-link {
-      font-size: 1rem;
+    /* Minimalist email display */
+    .email {
+      margin-top: 100px;
+      font-size: 0.85rem;
       font-weight: 300;
-      color: #000;
-      text-decoration: none;
-      letter-spacing: 1px;
-      border: 1px solid #000;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    section a.email-link:hover {
-      background-color: #000;
-      color: #fff;
+      color: #444;
     }
 
     @media (max-width: 600px) {
       .title-menu-container {
         margin-top: 30px;
+        margin-bottom: 10px;
       }
 
       .page-title,
@@ -155,17 +135,14 @@
         font-size: 0.8rem;
       }
 
-      section {
-        padding: 40px 15px;
-      }
-
-      section a.email-link {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+      .email {
+        font-size: 0.75rem;
+        margin-top: 80px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="title-menu-container">
@@ -188,14 +165,12 @@
     </div>
   </header>
 
-  <section>
-    <h2>Contact Me</h2>
-    <a class="email-link" href="mailto:sbalegi@gmail.com">sbalegi@gmail.com</a>
-  </section>
+  <div class="email">
+    <a href="mailto:sbalegi@gmail.com">sbalegi@gmail.com</a>
+  </div>
 
   <script>
     const menu = document.getElementById('popupMenu');
-
     function toggleMenu() {
       menu.classList.toggle('show');
     }
