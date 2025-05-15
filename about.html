@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – Salma Balagi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background-color: #fff;
+      color: #000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      max-width: 800px;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+    }
+
+    .title-menu-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-size: 1.6rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #222;
+    }
+
+    .menu-icon {
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: #222;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+
+    .menu-icon:hover,
+    .menu-icon:focus {
+      color: #555;
+      outline: none;
+    }
+
+    .popup {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      padding: 10px 15px;
+      width: 180px;
+      border-radius: 4px;
+      position: absolute;
+      top: 100%;
+      margin-top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .popup.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup a {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #222;
+      text-decoration: none;
+      margin: 0.4rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .popup a:hover {
+      color: #333;
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 700px;
+      padding: 40px 20px;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .title-menu-container {
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+
+      .page-title,
+      .menu-icon {
+        font-size: 1.2rem;
+      }
+
+      .popup a {
+        font-size: 0.8rem;
+      }
+
+      main {
+        font-size: 0.95rem;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title-menu-container">
+      <div class="page-title">Salma Balagi</div>
+      <div
+        class="menu-icon"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+        role="button"
+        tabindex="0"
+        onkeypress="if(event.key==='Enter'){toggleMenu();}"
+      >
+        &#9776;
+      </div>
+    </div>
+    <div class="popup" id="popupMenu">
+      <a href="index.html#selected-work">Selected Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <p>
+      Salma Balagi is a visual artist whose work explores the intersection of art, nature, and transformation. Her practice includes installation, craft, and bioart, often using recycled materials and organic elements to investigate unseen natural processes. Salma draws inspiration from childhood memories, microorganisms, and the delicate metamorphosis of materials over time. Through her work, she reveals overlooked beauty in decay, growth, and subtle environmental shifts.
+    </p>
+  </main>
+
+  <script>
+    const menu = document.getElementById('popupMenu');
+    function toggleMenu() {
+      menu.classList.toggle('show');
+    }
+
+    window.addEventListener('click', function (e) {
+      if (!menu.contains(e.target) && !e.target.classList.contains('menu-icon')) {
+        menu.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
