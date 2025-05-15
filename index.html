@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salma Balagi</title>
   <style>
     * {
@@ -22,21 +22,13 @@
       overflow-x: hidden;
     }
 
-    /* Header with name and menu */
+    /* Header (Menu Icon Only) */
     header {
       width: 100%;
       max-width: 800px;
+      position: relative;
       padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .name {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      text-align: right;
     }
 
     .menu-icon {
@@ -47,7 +39,7 @@
 
     .popup {
       position: absolute;
-      top: 50px;
+      top: 40px;
       right: 20px;
       background-color: #fff;
       border: 1px solid #ddd;
@@ -71,6 +63,18 @@
     .popup a:hover {
       color: #333;
       text-decoration: underline;
+    }
+
+    /* Page Title (Your Name) */
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #000;
+      letter-spacing: 1px;
     }
 
     /* Slider Section */
@@ -99,6 +103,7 @@
       object-fit: cover;
     }
 
+    /* Dots for navigation */
     .dots-container {
       display: flex;
       justify-content: center;
@@ -130,9 +135,8 @@
 </head>
 
 <body>
-  <!-- Header with Name on Left and Menu on Right -->
+  <!-- Header with Menu Icon -->
   <header>
-    <div class="name">Salma Balagi</div>
     <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     <div class="popup" id="popupMenu">
       <a href="#selected-work">Selected Work</a>
@@ -140,6 +144,9 @@
       <a href="#contact">Contact</a>
     </div>
   </header>
+
+  <!-- Name Section -->
+  <div class="page-title">Salma Balagi</div>
 
   <!-- Image Slider -->
   <div class="slider">
@@ -190,7 +197,7 @@
       updateSlider();
     }
 
-    setInterval(changeSlide, 5000); // Auto-change every 5s
+    setInterval(changeSlide, 5000); // Auto-change every 5 seconds
     updateSlider(); // Set initial active dot
   </script>
 </body>
