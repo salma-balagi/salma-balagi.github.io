@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salma Balagi</title>
   <!-- Optional: Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -27,20 +27,53 @@
     header {
       width: 100%;
       max-width: 800px;
-      position: relative;
       padding: 10px 20px;
-      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    /* New container for title + menu */
+    .title-menu-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      position: relative;
+      right: auto; /* reset if needed */
+    }
+
+    .page-title {
+      font-size: 1.6rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #222;
+      user-select: none;
     }
 
     .menu-icon {
-      font-size: 2rem;
+      font-size: 1.6rem; /* match the title font size */
+      font-weight: 300;
+      color: #222;
       cursor: pointer;
-      color: #000;
+      user-select: none;
+      transition: color 0.3s ease;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon:hover,
+    .menu-icon:focus {
+      color: #555;
+      outline: none;
     }
 
     .popup {
       position: absolute;
-      top: 40px;
+      top: 60px;
       right: 20px;
       background-color: #fff;
       border: 1px solid #ddd;
@@ -72,17 +105,6 @@
     .popup a:hover {
       color: #333;
       text-decoration: underline;
-    }
-
-    .page-title {
-      font-size: 1.6rem;       /* smaller font size */
-      font-weight: 300;        /* thinner weight */
-      text-transform: uppercase;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      text-align: center;
-      letter-spacing: 2px;     /* slightly more spacing for elegance */
-      color: #222;             /* slightly softer black */
     }
 
     .slider {
@@ -148,7 +170,16 @@
     }
 
     @media (max-width: 600px) {
+      .title-menu-container {
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+
       .page-title {
+        font-size: 1.2rem;
+      }
+
+      .menu-icon {
         font-size: 1.2rem;
       }
 
@@ -168,18 +199,26 @@
 </head>
 
 <body>
-  <!-- Header -->
   <header>
-    <div class="menu-icon" onclick="toggleMenu()" aria-label="Menu" role="button" tabindex="0">&#9776;</div>
+    <div class="title-menu-container">
+      <div class="page-title">Salma Balagi</div>
+      <div
+        class="menu-icon"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+        role="button"
+        tabindex="0"
+        onkeypress="if(event.key==='Enter'){toggleMenu();}"
+      >
+        &#9776;
+      </div>
+    </div>
     <div class="popup" id="popupMenu">
       <a href="#selected-work">Selected Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
   </header>
-
-  <!-- Title -->
-  <div class="page-title">Salma Balagi</div>
 
   <!-- Image Slider -->
   <div class="slider">
@@ -230,7 +269,7 @@
     function updateSlider() {
       const offset = -100 * currentIndex;
       slideContainer.style.transform = `translateX(${offset}%)`;
-      dots.forEach(dot => dot.classList.remove('active-dot'));
+      dots.forEach((dot) => dot.classList.remove('active-dot'));
       dots[currentIndex].classList.add('active-dot');
     }
 
